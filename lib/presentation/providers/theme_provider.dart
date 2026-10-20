@@ -28,3 +28,20 @@ class SelectedColorNotifier extends Notifier<int> {
 
   void select(int index) => state = index;
 }
+
+final themeNotifierProvider = NotifierProvider<ThemeNotifier, AppTheme>(
+  ThemeNotifier.new,
+);
+
+class ThemeNotifier extends Notifier<AppTheme> {
+  @override
+  AppTheme build() => AppTheme();
+
+  void toogleDarkMode() {
+    state = state.copyWith(isDarkMode: !state.isDarkMode);
+  }
+
+  void changeColorIndex(int colorIndex) {
+    state = state.copyWith(selectedColor: colorIndex);
+  }
+}
